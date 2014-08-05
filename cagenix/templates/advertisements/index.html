@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block header %}
+<h1 class="page-header">Advertisements</h1>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-user-md fa-fw"></i> Advertisements
+        <div class="pull-right">
+          <a href="{{ url_for('advertisements.advertisements_create') }}" class="">Add New</a>
+        </div>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Active</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+              <tbody>
+              {% for ad in advertisements %}
+              <tr>
+                <td>{{ ad.name }}</td>
+                <td>{{ ad.position }}</td>
+                <td>{{ ad.active }}</td>
+                <td><img src="{{ ad.asset_location }}" height="150px"></img></td>
+                <td><a href="{{ url_for('advertisements.advertisements_delete', ad_id=ad.ad_id) }}" class="btn btn-xs btn-danger">Delete</a></td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /.panel-footer -->
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /.row -->
+{% endblock %}

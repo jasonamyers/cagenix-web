@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "__formhelpers.html" import render_form %}
+{% block header %}
+<h1 class="page-header">Add New Practitioner</h1>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        {{ render_form(form, action_url=url_for('users.users_create'), action_text='Submit Form') }}
+      </div>
+      <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+  </div>
+  <!-- /.col-lg-4 -->
+</div>
+<!-- /.row -->
+{% endblock %}

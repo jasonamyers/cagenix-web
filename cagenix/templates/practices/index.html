@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block header %}
+<h1 class="page-header">Practices</h1>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="{{ url_for('practices.practices_create') }}" class="">Add New</a>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Practioners</th>
+                <th>Actions</th>
+              </tr>
+              <tbody>
+              {% for practice in practices %}
+              <tr>
+                <td>{{ practice.practice_name }}</td>
+                <td>{{ practice.city }}</td>
+                <td>{{ practice.state }}</td>
+                <td>{{ practice.practioneers.count() }}</td>
+                <td><a href="{{ url_for('practices.practices_delete', practice_id=practice.id) }}" class="btn btn-xs btn-danger">Delete</a></td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /.panel-footer -->
+        </div>
+        <!-- /.panel .chat-panel -->
+      </div>
+      <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+    {% endblock %}
